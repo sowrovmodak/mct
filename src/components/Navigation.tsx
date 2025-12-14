@@ -47,10 +47,14 @@ export default function Navigation({ onNavigate }: NavigationProps) {
             className="flex items-center space-x-3 cursor-pointer"
             onClick={() => handleNavClick('home')}
           >
-            <div className={`p-2 rounded-lg transition-colors ${
-              isScrolled ? 'bg-blue-600' : 'bg-white'
+            <div className={`rounded-lg transition-all ${
+              isScrolled ? 'bg-white p-1' : 'bg-white/10 p-1 backdrop-blur-sm'
             }`}>
-              <Sparkles className={`w-6 h-6 ${isScrolled ? 'text-white' : 'text-blue-600'}`} />
+              <img 
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVyL8DZ3sTTN-USkS1sXJ444-SczI54-OMcw&s" 
+                alt="MCT Logo" 
+                className="w-10 h-10 object-contain"
+              />
             </div>
             <div>
               <h1

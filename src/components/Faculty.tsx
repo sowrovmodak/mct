@@ -1,41 +1,40 @@
 import { Mail, Phone, User } from 'lucide-react';
 
 interface Faculty {
-  id: number;
+  id: string;
   name: string;
   designation: string;
   email: string;
   phone?: string;
+  cellPhone?: string;
   bio?: string;
-  image_url?: string;
-  expertise: string[];
+  imageUrl?: string;
+  specialization: string[];
+  personalWebpage?: string;
 }
 
 const facultyData: Faculty[] = [
   {
-    id: 1,
-    name: 'Dr. Sarah Rahman',
-    designation: 'Professor & Head of Department',
-    email: 'sarah.rahman@diu.edu.bd',
-    phone: '+880 1712-345678',
-    bio: 'Dr. Rahman specializes in multimedia systems and interactive design with over 15 years of experience.',
-    expertise: ['Multimedia Systems', 'Interactive Design', 'UX Research', 'Digital Media'],
+    id: 'f1',
+    name: 'Mr. Md. Salah Uddin',
+    designation: 'Assistant Professor and Head',
+    email: 'headmct@daffodilvarsity.edu.bd',
+    phone: 'Ext.40100',
+    cellPhone: '01847334769',
+    imageUrl: 'https://i.ibb.co.com/zhLjJS05/salah-uddin.jpg',
+    specialization: ['Structured and OOP Programming', 'Multimedia Authoring', 'Database', 'Game Theory', 'Script Programming', 'Web Engine'],
+    personalWebpage: 'https://faculty.daffodilvarsity.edu.bd/profile/mct/salah-mct.html',
   },
   {
-    id: 2,
-    name: 'Md. Karim Ahmed',
-    designation: 'Associate Professor',
-    email: 'karim.ahmed@diu.edu.bd',
-    bio: '3D animation and game development expert with industry experience at major studios.',
-    expertise: ['3D Animation', 'Game Development', 'Unity', 'Blender'],
-  },
-  {
-    id: 3,
-    name: 'Fatima Khan',
-    designation: 'Assistant Professor',
-    email: 'fatima.khan@diu.edu.bd',
-    bio: 'Specializing in video production, cinematography, and digital storytelling.',
-    expertise: ['Video Production', 'Cinematography', 'Film Editing', 'Adobe Suite'],
+    id: 'f2',
+    name: 'Prof. Dr. Md Kabirul Islam',
+    designation: 'Professor & Dean',
+    email: 'kislam@daffodilvarsity.edu.bd',
+    phone: '9138234-5, Ext. 157',
+    cellPhone: '01819382879',
+    imageUrl: 'https://i.ibb.co.com/v435bSPF/29c07d00e8a21ecc5596d98e93279885.jpg',
+    specialization: ['ICT for Development', 'E-learning and M-learning', 'Teacher Development', 'Research Culture Development'],
+    personalWebpage: 'https://faculty.daffodilvarsity.edu.bd/profile/mct/kislam.html',
   },
 ];
 
@@ -61,9 +60,9 @@ export default function Faculty() {
               className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-200 hover:border-blue-300"
             >
               <div className="relative h-64 bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center overflow-hidden">
-                {member.image_url ? (
+                {member.imageUrl ? (
                   <img
-                    src={member.image_url}
+                    src={member.imageUrl}
                     alt={member.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -78,13 +77,9 @@ export default function Faculty() {
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
                 <p className="text-blue-600 font-medium mb-4">{member.designation}</p>
 
-                {member.bio && (
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">{member.bio}</p>
-                )}
-
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-2">
-                    {member.expertise.slice(0, 3).map((skill, idx) => (
+                    {member.specialization.slice(0, 3).map((skill, idx) => (
                       <span
                         key={idx}
                         className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full"
@@ -92,9 +87,9 @@ export default function Faculty() {
                         {skill}
                       </span>
                     ))}
-                    {member.expertise.length > 3 && (
+                    {member.specialization.length > 3 && (
                       <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">
-                        +{member.expertise.length - 3} more
+                        +{member.specialization.length - 3} more
                       </span>
                     )}
                   </div>
@@ -102,19 +97,29 @@ export default function Faculty() {
 
                 <div className="space-y-2 text-sm">
                   <a
-                    href={`mailto:${member.email}`}
+                    href={`mailto:${member.email.split(',')[0].trim()}`}
                     className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors"
                   >
                     <Mail className="w-4 h-4" />
-                    <span className="truncate">{member.email}</span>
+                    <span className="truncate">{member.email.split(',')[0].trim()}</span>
                   </a>
-                  {member.phone && (
+                  {member.cellPhone && (
                     <a
-                      href={`tel:${member.phone}`}
+                      href={`tel:${member.cellPhone.split(',')[0].trim()}`}
                       className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors"
                     >
                       <Phone className="w-4 h-4" />
-                      <span>{member.phone}</span>
+                      <span>{member.cellPhone.split(',')[0].trim()}</span>
+                    </a>
+                  )}
+                  {member.personalWebpage && (
+                    <a
+                      href={member.personalWebpage}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-2 text-xs text-blue-600 hover:text-blue-700 font-medium"
+                    >
+                      View Full Profile →
                     </a>
                   )}
                 </div>

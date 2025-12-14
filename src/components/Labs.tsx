@@ -25,6 +25,7 @@ const labsData: Lab[] = [
       'Render Farm',
       'Large Format Display',
     ],
+    image_url: '/1 (1).jpeg',
   },
   {
     id: 2,
@@ -41,6 +42,7 @@ const labsData: Lab[] = [
       'Video Editing Stations',
       'Adobe Premiere & After Effects',
     ],
+    image_url: '/1 (2).jpeg',
   },
   {
     id: 3,
@@ -56,6 +58,7 @@ const labsData: Lab[] = [
       'Multiple Monitors',
       'Game Testing Area',
     ],
+    image_url: '/1 (3).jpeg',
   },
 ];
 
